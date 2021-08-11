@@ -12,4 +12,3 @@ build: build
 .PHONY: test
 test: test
 	mvn '-Dtest=dp-java-duration-parse.*Test' test
-	# mvn -pl zebedee-reader -Dossindex.skip=true test
