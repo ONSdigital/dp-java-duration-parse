@@ -7,11 +7,6 @@
     <artifactId>test-why-not-working-test</artifactId>
     <version>1.0-SNAPSHOT</version>
     <repositories>
-        <!--            <repository>-->
-        <!--                <id>internal.repo</id>-->
-        <!--                <name>Temporary Staging Repository</name>-->
-        <!--                <url>file://${project.build.directory}/mvn-repo</url>-->
-        <!--            </repository>-->
         <repository>
             <id>jiypack.io</id>
             <url>https://jitpack.io</url>
@@ -39,11 +34,11 @@
         </pluginManagement>
     </build>
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.github.ONSDigital</groupId>-->
-<!--            <artifactId>dp-java-duration-parse</artifactId>-->
-<!--            <version>0.1</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.github.ONSDigital</groupId>
+            <artifactId>dp-java-duration-parse</artifactId>
+            <version>0.1.0</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
