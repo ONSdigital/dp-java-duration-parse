@@ -1,5 +1,5 @@
 # dp-java-duration-parse
-Used by Java applications to parse durations in two formats.  Both are not case sensitive.  Example valid formats are:-
+Used by Java applications to parse durations in two formats.  Both are not case sensitive.  Example valid formats are:
 - `PT0s` which is equivalent to `0s`
 - `PT1s` which is equivalent to `1s`
 - `PT0.050s` which is equivalent to `0.05s`
