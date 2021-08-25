@@ -2,10 +2,13 @@ package com.github.onsdigital.dpjavadurationparse;
 
 import java.time.Duration;
 import java.time.format.DateTimeParseException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Optional;
 
 public class ParseDuration {
+
+    private ParseDuration() {
+        throw new IllegalStateException("ParseDuration is a static Utility class.  No instantiation possible.x");
+    }
 
     /**
      * Parse's Duration in either ISO8601 or format's similar to: 3h56s345ms.
@@ -38,10 +41,7 @@ public class ParseDuration {
      *          34µs3h56s345ms
      *          3h56s345ms34µs*
      */
-    /*
-
-     */
-    public static Duration parseThisDuration(String stringDuration) {
+    public static <Optional>Duration parseDuration(String stringDuration) {
         // Flag to identify durations in the past
         boolean negative = false;
         // Quality check the quality of the parameter
@@ -64,11 +64,10 @@ public class ParseDuration {
             stringDuration = "-".concat(stringDuration);
         }
         // Try parse the duration.
-        Duration parsedDuration=null;
         try {
-            parsedDuration = Duration.parse(stringDuration);
+            return Optional.of(Duration.parse(stringDuration));
         } catch (DateTimeParseException ex) {
-            return null;
+            return Optional.empty();
         }
         return parsedDuration;
     }

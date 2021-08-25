@@ -5,14 +5,13 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: golang
-    tag: 1.12.0
+    repository: onsdigital/dp-concourse-tools-java
 
 inputs:
   - name: dp-java-duration-parse
 
-caches:
-  - path: go/
+params:
+  APPLICATION:
 
 run:
   path: dp-java-duration-parse/ci/scripts/unit.sh
