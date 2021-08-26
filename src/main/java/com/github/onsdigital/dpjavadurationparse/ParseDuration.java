@@ -12,14 +12,14 @@ public class ParseDuration {
 
     /**
      * Parse's Duration in either ISO8601 or format's similar to: 3h56s345ms.
-     * Returns Optional.empty if stringDuration is null or if the parse wasn't successful.
+     * Throws DateTimeParseException if stringDuration is null or if the parse wasn't successful.
      *
      * The "PT" prefix on each of the ISO8601's durations example below, where P is
      * a "period" duration designation ("P") and a "time" designation ("T") per the ISO-8601Checks whether duration
      * starts with string looks like an ISO8601 formatted string, and if not it adds PT.
      *
      * @param stringDuration Checking whether {@link String} starts with the appropriate ISO8601 characters.
-     * @return A {@link Optional<Duration>}
+     * @return A {@link Duration}
      * Compatible with one or a combination of the following units: h, m, s
      *
      * Example Valid Formats
@@ -37,12 +37,12 @@ public class ParseDuration {
      *          3h34µs
      *          -56s
      *
-     * Example Invalid Formats, resulting in Optional.empty bring returned.
+     * Example Invalid Formats, resulting in DateTimeParseException being thrown.
      *          3h56s345ms34µs34us
      *          34µs3h56s345ms
      *          3h56s345ms34µs*
      */
-    public static Optional <Duration> parseDuration(String stringDuration) {
+    public static Duration parseDuration(String stringDuration) {
         // Flag to identify durations in the past
         boolean negative = false;
         // Quality check the quality of the parameter
@@ -52,7 +52,7 @@ public class ParseDuration {
             || (!stringDuration.startsWith("PT") && stringDuration.length()<2) // e.g. "1
         )
         {
-            return Optional.empty();
+            throw new DateTimeParseException("The string was of the wrong format", stringDuration, 0);
         }
         stringDuration = stringDuration.toUpperCase();
         // Check if it starts with a negative.
@@ -70,10 +70,6 @@ public class ParseDuration {
             stringDuration = "-".concat(stringDuration);
         }
         // Try parse the duration.
-        try {
-            return Optional.of(Duration.parse(stringDuration));
-        } catch (DateTimeParseException ex) {
-            return Optional.empty();
-        }
+        return Duration.parse(stringDuration);
     }
 }
