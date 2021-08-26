@@ -41,13 +41,13 @@ public class ParseDuration {
      *          34µs3h56s345ms
      *          3h56s345ms34µs*
      */
-    public static <Optional>Duration parseDuration(String stringDuration) {
+    public static Optional <Duration> parseDuration(String stringDuration) {
         // Flag to identify durations in the past
         boolean negative = false;
         // Quality check the quality of the parameter
         if(stringDuration==null
                 || (stringDuration.startsWith("PT") && stringDuration.length()<4)                  // e.g. "PR1"
-                || (!stringDuration.startsWith("PT") && stringDuration.length()<2)) return null;   // e.g. "1"
+                || (!stringDuration.startsWith("PT") && stringDuration.length()<2)) return Optional.empty();   // e.g. "1"
         stringDuration = stringDuration.toUpperCase();
         // Check if it starts with a negative.
         if(stringDuration.startsWith("-")) {
@@ -69,6 +69,5 @@ public class ParseDuration {
         } catch (DateTimeParseException ex) {
             return Optional.empty();
         }
-        return parsedDuration;
     }
 }

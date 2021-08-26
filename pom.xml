@@ -6,12 +6,6 @@
     <groupId>com.github.onsdigital</groupId>
     <artifactId>dp-java-duration-parse</artifactId>
     <version>0.1</version>
-    <repositories>
-        <repository>
-            <id>jiypack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
     <build>
         <pluginManagement>
             <plugins>
@@ -34,11 +28,6 @@
         </pluginManagement>
     </build>
     <dependencies>
-        <dependency>
-            <groupId>com.github.ONSDigital</groupId>
-            <artifactId>dp-java-duration-parse</artifactId>
-            <version>0.1.0</version>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
