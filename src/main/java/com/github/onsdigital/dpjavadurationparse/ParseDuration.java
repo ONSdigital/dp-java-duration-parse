@@ -7,7 +7,7 @@ import java.util.Optional;
 public class ParseDuration {
 
     private ParseDuration() {
-        throw new IllegalStateException("ParseDuration is a static Utility class.  No instantiation possible.x");
+        // ParseDuration is a static Utility class.  No instantiation possible
     }
 
     /**

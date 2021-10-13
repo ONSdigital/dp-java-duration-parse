@@ -1,18 +1,13 @@
-.PHONY: all
-all: audit test build
+SHELL=bash
 
-.PHONY: lint
+JAVA_OPTS=-Xmx1024m -Xms1024m -Xdebug -Xrunjdwp:transport=dt_socket,address=8004,server=y,suspend=n
+
+test:
+	mvn -Dossindex.skip test
+audit:
+	mvn ossindex:audit
+build:
+	mvn -DskipTests -Dossindex.skip -Dossindex.skip=true clean package
 lint:
 	exit
-
-.PHONY: audit
-audit : audit
-	mvn install -pl dp-java-duration-parse -Dmaven.test.skip -Dossindex.skip=true
-
-.PHONY: build
-build: build
-	mvn -pl dp-java-duration-parse -Dmaven.test.skip -Dossindex.skip=true clean package dependency:copy-dependencies
-
-.PHONY: test
-test: test
-	mvn '-Dtest=dp-java-duration-parse.*Test' test
+.PHONY: build test audit lint

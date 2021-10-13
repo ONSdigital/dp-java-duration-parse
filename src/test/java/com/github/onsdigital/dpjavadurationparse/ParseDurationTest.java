@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Test for {@link ParseDuration}.
  */
-public class ParseDurationTest {
+public class    ParseDurationTest {
 
     @Test
     public void durationsWithPT()  {
@@ -43,7 +43,7 @@ public class ParseDurationTest {
         assertEquals(Duration.ofHours(-3).plusSeconds(-50), parseDuration("-PT3h50s"));
     }
 
-    @Test //(expected = DateTimeParseException.class)
+    @Test
     public void invalidDurationsWithPT()  {
         // Given
         // a set of invalid durations in strings, check they were not parsed properly.
@@ -110,34 +110,6 @@ public class ParseDurationTest {
         assertThrows(DateTimeParseException.class, () -> parseDuration("01"));
 
         assertThrows(DateTimeParseException.class, () -> parseDuration(""));
-    }
-
-    @Test
-    public void testForInstatiation() {
-        // Given
-        // the class ParseDuration, ensure that it cannot be instantiated, and throws an exception.
-        try {
-            Class c=Class.forName("com.github.onsdigital.dpjavadurationparse.ParseDuration");
-            Constructor con=c.getDeclaredConstructor();
-            con.setAccessible(true);
-            con.newInstance();
-        } catch (InvocationTargetException ex) {
-            Throwable targetException = ex.getTargetException();
-            //Ensure that the reflected exception is an instance of IllegalStateException
-            assertInstanceOf(IllegalStateException.class, targetException);
-        } catch (IllegalAccessException ex) {
-            ex.printStackTrace();
-            fail("Expected InvocationTargetException not IllegalAccessException");
-        } catch (InstantiationException ex) {
-            ex.printStackTrace();
-            fail("Expected InvocationTargetException not InstantiationException");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            fail("Expected InvocationTargetException not ClassNotFoundException");
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-            fail("Expected InvocationTargetException not NoSuchMethodException");
-        }
     }
 
 }
