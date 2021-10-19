@@ -1,12 +1,11 @@
 package com.github.onsdigital.dpjavadurationparse;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.time.format.DateTimeParseException;
 
 import static com.github.onsdigital.dpjavadurationparse.ParseDuration.parseDuration;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 /**

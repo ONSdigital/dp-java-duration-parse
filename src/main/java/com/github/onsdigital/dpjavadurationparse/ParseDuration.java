@@ -2,7 +2,6 @@ package com.github.onsdigital.dpjavadurationparse;
 
 import java.time.Duration;
 import java.time.format.DateTimeParseException;
-import java.util.Optional;
 
 public class ParseDuration {
 
